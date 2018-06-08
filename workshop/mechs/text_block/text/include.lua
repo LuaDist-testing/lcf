@@ -5,9 +5,13 @@ return
     end
     self:store_textline()
 
-    for i, rec in ipairs(block.processed_text) do
-      table.insert(self.processed_text, rec)
-    end
+    table.move(
+      block.processed_text,
+      1,
+      #block.processed_text,
+      #self.processed_text + 1,
+      self.processed_text
+    )
 
     self.line_with_text = block.line_with_text
   end

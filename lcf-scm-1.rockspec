@@ -3,23 +3,17 @@ version = 'scm-1'
 
 source = {
   url = 'git://github.com/martin-eden/lua_code_formatter.git',
-  branch = '5.1',
+  branch = 'master',
 }
 
 description = {
   summary = 'Lua code formatter.',
-  detailed = [[
-Formats any valid Lua 5.3 code.
-
-Lines with code are wrapped to fit inside given margins.
-
-This is a backport to Lua v5.1 from Lua v5.3.
-]],
+  detailed = 'Formats any valid Lua 5.3 code.\x0A\x0ALines with code are wrapped to fit inside given margins.\x0A',
   license = 'GPL v3',
 }
 
 dependencies = {
-  'lua == 5.1',
+  'lua ~> 5.3',
 }
 
 build = {
