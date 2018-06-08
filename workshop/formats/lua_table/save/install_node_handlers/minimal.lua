@@ -14,7 +14,7 @@ local compile =
     add(raw_compile(t, node_handlers))
   end
 
-local is_identifier = request('!.formats.lua.is_identifier')
+local is_identifier = request('!.formats.lua.load.is_identifier')
 local compact_sequences = true
 
 node_handlers.table =
@@ -71,11 +71,11 @@ do
 end
 
 do
-  local quote = request('!.lua.string.quote')
+  local quote_string = request('!.formats.lua.save.quote_string')
 
   local serialize_quoted =
     function(node)
-      local quoted_string = quote(tostring(node.value))
+      local quoted_string = quote_string(tostring(node.value))
       -- Quite ugly handling indexing [[[s]]] case: convert to [ [[s]]]
       if not text_block:on_clean_line() then
         local text_line = text_block.line_with_text:get_line()

@@ -1,20 +1,13 @@
 local get_params = request('get_formatter_ast.get_params')
 local convert = request('!.file.convert')
 local get_ast = request('!.lua.code.get_ast')
-local transform_ast = request('!.formats.lua.transform_ast')
+local formatter_preprocess = request('!.formats.lua.save.formatter.preprocess')
 
 local parse =
   function(s)
     local result
     result = get_ast(s)
-    result =
-      transform_ast(
-        result,
-        {
-          keep_comments = true,
-          keep_unparsed_tail = true,
-        }
-      )
+    result = formatter_preprocess(result, true) --second parameter is <keep_comments>
     return result
   end
 
